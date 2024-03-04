@@ -42,3 +42,7 @@ debug := httpdebug.NewWebUIHandler(
 
 handler = debug.WebUI(handler)
 ```
+
+## License
+
+[GPL-3.0](./COPYING)
