@@ -9,17 +9,16 @@ class DataTabsWrapper extends HTMLElement {
 
     const style = document.createElement("style");
     style.textContent = `
-            pre {
-	    	white-space: pre-wrap;
-	    	background-color: var(--main-surface-secondary);
-		border-radius: 4px;
-		padding: 10px 15px;
-		margin-bottom: 46px;
-	    }
+pre {
+  white-space: pre-wrap;
+  background-color: var(--main-surface-secondary);
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-bottom: 46px;
+}
         `;
     this.shadowRoot.appendChild(style);
 
-    // Listen for the custom event
     document.addEventListener("item-selected", (event) => {
       this.updateTabContents(event.detail.item);
     });
@@ -27,41 +26,39 @@ class DataTabsWrapper extends HTMLElement {
 
   renderTabs() {
     this.shadowRoot.innerHTML = `
-      <tabs-container>
-        <tab-item for="request">Request</tab-item>
-        <tab-item for="response">Response</tab-item>
-        <tab-content id="request">
-	<div>
-	<pre></pre>
-	</div>
-	</tab-content>
-        <tab-content id="response">
-	<div>
-	<pre></pre>
-	</div>
-	</tab-content>
-      </tabs-container>
+<tabs-container>
+  <tab-item for="request">Request</tab-item>
+  <tab-item for="response">Response</tab-item>
+  <tab-content id="request">
+    <div><pre></pre></div>
+  </tab-content>
+  <tab-content id="response">
+    <div><pre></pre></div>
+  </tab-content>
+</tabs-container>
     `;
   }
 
   updateTabContents(itemData) {
-    console.log(itemData);
     const requestContent = this.shadowRoot.querySelector("#request");
     const responseContent = this.shadowRoot.querySelector("#response");
 
     requestContent.innerHTML = `
 <div>
-<h3>Headers</h3>
-<pre>${itemData.request.raw_headers.trim()}</pre>
-<h3>Body</h3>
-<pre>${itemData.request.body || "Empty request body"}</pre>
+  <h3>Headers</h3>
+  <pre>${itemData.request.raw_headers.trim()}</pre>
+  <h3>Body</h3>
+  <pre>${itemData.request.body || "Empty request body"}</pre>
+</div>
    `;
     responseContent.innerHTML = `
 <div>
-<h3>Headers</h3>
-<pre>${itemData.response.raw_headers.trim()}</pre>
-<h3>Body</h3>
-<pre>${itemData.response.body || "Empty response body"}</pre>
+  <h3>Headers</h3>
+  <pre>${itemData.response.raw_headers.trim()}</pre>
+  
+  <h3>Body</h3>
+  <pre>${itemData.response.body || "Empty response body"}</pre>
+</div>
    `;
   }
 }
@@ -77,9 +74,9 @@ class TabsContainer extends HTMLElement {
   connectedCallback() {
     const style = document.createElement("style");
     style.textContent = `
-	    tab-content {
-	    margin-bottom: 20px;
-	    }
+tab-content {
+  margin-bottom: 20px;
+}
         `;
     this.shadowRoot.appendChild(style);
 
@@ -135,15 +132,15 @@ class TabItem extends HTMLElement {
     this.attachShadow({ mode: "open" });
     const style = document.createElement("style");
     style.textContent = `
-            :host {
-                display: inline-block;
-                padding: 10px;
-                margin-right: 5px;
-                cursor: pointer;
-            }
-            :host(.active) {
-	        border-bottom: 2px solid var(--brand-purple);
-            }
+:host {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+:host(.active) {
+  border-bottom: 2px solid var(--brand-purple);
+}
         `;
     this.shadowRoot.appendChild(style);
 
@@ -161,9 +158,9 @@ class TabContent extends HTMLElement {
     this.attachShadow({ mode: "open" });
     const style = document.createElement("style");
     style.textContent = `
-            :host {
-                display: none;
-            }
+:host {
+  display: none;
+}
         `;
     this.shadowRoot.appendChild(style);
 

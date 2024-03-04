@@ -7,27 +7,27 @@ class StatusCode extends HTMLElement {
   connectedCallback() {
     const style = document.createElement("style");
     style.textContent = `
-             :host {
-	     padding: 2px 6px;
+:host {
+  padding: 2px 6px;
   border-radius: 6px;
   font-weight: bold;
-      	    }
+}
 
-	    :host(.green) {
-		background-color: green;
-	    }
+:host(.green) {
+  background-color: green;
+}
 
-	    :host(.yellow) {
-	    	background-color: yellow;
-	    }
+:host(.yellow) {
+  background-color: yellow;
+}
 
-	    :host(.orange) {
-	    	background-color: orange;
-	    }
+:host(.orange) {
+  background-color: orange;
+}
 
-	    :host(.red) {
-	    	background-color: red;
-	    }
+:host(.red) {
+  background-color: red;
+}
               `;
     this.shadowRoot.appendChild(style);
 
@@ -60,22 +60,22 @@ class ResponseItem extends HTMLElement {
   connectedCallback() {
     const style = document.createElement("style");
     style.textContent = `
-            div {
-              padding: 16px;
-              cursor: pointer;
-            }
+div {
+  padding: 16px;
+  cursor: pointer;
+}
 
-            div:hover {
-              background-color: var(--main-surface-tertiary);
-            }
+div:hover {
+  background-color: var(--main-surface-tertiary);
+}
 
-            :host(.active) div {
-              background-color: var(--main-surface-secondary);
-            }
+:host(.active) div {
+  background-color: var(--main-surface-secondary);
+}
 
-	    status-code {
-	    margin-right: 8px;
-	    }
+status-code {
+  margin-right: 8px;
+}
                     `;
     this.shadowRoot.appendChild(style);
   }
